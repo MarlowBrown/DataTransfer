@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.13" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.13">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\content\Austria.png" />
+      <None Include="wwwroot\content\Brazil.png" />
+      <None Include="wwwroot\content\Canada.png" />
+      <None Include="wwwroot\content\China.png" />
+      <None Include="wwwroot\content\Cyprus.png" />
+      <None Include="wwwroot\content\Finland.png" />
+      <None Include="wwwroot\content\France.png" />
+      <None Include="wwwroot\content\Germany.png" />
+      <None Include="wwwroot\content\Great Britain.png" />
+      <None Include="wwwroot\content\Italy.png" />
+      <None Include="wwwroot\content\Jamaica.png" />
+      <None Include="wwwroot\content\Japan.png" />
+      <None Include="wwwroot\content\Mexico.png" />
+      <None Include="wwwroot\content\Netherlands.png" />
+      <None Include="wwwroot\content\Pakistan.png" />
+      <None Include="wwwroot\content\Portugal.png" />
+      <None Include="wwwroot\content\Russia.png" />
+      <None Include="wwwroot\content\Slovakia.png" />
+      <None Include="wwwroot\content\Sweden.png" />
+      <None Include="wwwroot\content\Thailand.png" />
+      <None Include="wwwroot\content\Ukraine.png" />
+      <None Include="wwwroot\content\Uruguay.png" />
+      <None Include="wwwroot\content\USA.png" />
+      <None Include="wwwroot\content\Zimbabwe.png" />
+    </ItemGroup>
+
+</Project>
