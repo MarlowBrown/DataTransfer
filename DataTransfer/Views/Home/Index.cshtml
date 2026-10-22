@@ -1,4 +1,4 @@
-﻿@model CountryViewModel
+﻿@model CountriesViewModel
 @{
     ViewData["Title"] = "Olympics Countries";
 }
@@ -36,8 +36,10 @@
             @foreach (Country country in Model.Countries)
             {
                 <li class="list-inline-item">
-                    <img src="~/content/@country.LogoName" alt="@country.Name"
-                         title="@country.Name | @country.Game @country.SportAndType" />
+                    <a asp-action="Details" asp-route-id="@country.Name">
+                        <img src="~/content/@country.LogoName" alt="@country.Name"
+                             title="@country.Name | @country.Game @country.SportAndType"/>
+                    </a>
                 </li>
             }
         </ul>

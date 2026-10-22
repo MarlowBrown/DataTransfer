@@ -1,0 +1,14 @@
+@model CountryViewModel
+
+<li class="list-group-item">
+    <form asp-action="Add" method="post">
+        <a asp-action="Index" class="btn btn-primary"
+           asp-route-activeGame="@Model.ActiveGame"
+           asp-route-activeCategory="@Model.ActiveCategory">
+            Return to Home Page</a>
+        <button type="submit" class="btn btn-primary">
+            Add to Favorites
+        </button>
+        <input type="hidden" asp-for="Country.Name" />
+    </form>
+</li>

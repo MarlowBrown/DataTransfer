@@ -211,3 +211,4 @@
 /home/talon/Documents/DMACC/CIS174/DataTransfer/DataTransfer/DataTransfer/obj/Debug/net10.0/DataTransfer.pdb
 /home/talon/Documents/DMACC/CIS174/DataTransfer/DataTransfer/DataTransfer/obj/Debug/net10.0/DataTransfer.genruntimeconfig.cache
 /home/talon/Documents/DMACC/CIS174/DataTransfer/DataTransfer/DataTransfer/obj/Debug/net10.0/ref/DataTransfer.dll
+/home/talon/Documents/DMACC/CIS174/DataTransfer/DataTransfer/DataTransfer/obj/Debug/net10.0/DataTransfer.sourcelink.json

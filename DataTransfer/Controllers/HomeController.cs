@@ -8,7 +8,25 @@ public class HomeController : Controller
 {
     public IActionResult Index(string activeGame = "all", string activeCategory = "all")
     {
-        CountryViewModel viewModel = new CountryViewModel()
+        var session = new CountriesSession(HttpContext.Session);
+        session.SetActiveGame(activeGame);
+        session.SetActiveCategory(activeCategory);
+
+        int? count = session.GetCountryCount();
+        if (count == null)
+        {
+            var cookies = new CountryCookies(Request.Cookies);
+            string[] ids = cookies.GetMyCountryIds();
+
+            List<Country> myCountries = new List<Country>();
+            if (ids.Length > 0)
+            {
+                myCountries = Country.AllCountries.Where(x => ids.Contains(x.Name)).ToList();
+            }
+            session.SetCountries(myCountries);
+        }
+        
+        CountriesViewModel viewModel = new CountriesViewModel()
         {
             ActiveGame = activeGame,
             ActiveCategory = activeCategory,
@@ -34,6 +52,37 @@ public class HomeController : Controller
         return View(viewModel);
     }
 
+    [HttpGet]
+    public ViewResult Details(string id)
+    {
+        var session = new CountriesSession(HttpContext.Session);
+        var model = new CountryViewModel()
+        {
+            Country = Country.AllCountries.First(t => t.Name == id),
+            ActiveCategory = session.GetActiveCategory(),
+            ActiveGame = session.GetActiveGame()
+        };
+        return View(model);
+    }
+
+    [HttpPost]
+    public RedirectToActionResult Add(CountryViewModel model)
+    {
+        var session = new CountriesSession(HttpContext.Session);
+        var countries = session.GetCountries();
+        countries.Add(model.Country);
+        session.SetCountries(countries);
+
+        var cookies = new CountryCookies(Response.Cookies);
+        cookies.SetMyCountries(countries);
+        
+        return RedirectToAction("Index", new
+        {
+            ActiveGame = session.GetActiveGame(),
+            ActiveCategory = session.GetActiveCategory()
+        });
+    }
+    
     public IActionResult Privacy()
     {
         return View();
