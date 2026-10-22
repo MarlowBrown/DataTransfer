@@ -23,7 +23,10 @@ public class FavoritesController : Controller
     public RedirectToActionResult Delete()
     {
         var session = new CountriesSession(HttpContext.Session);
+        var cookies = new CountryCookies(Response.Cookies);
+        
         session.RemoveCountries();
+        cookies.RemoveMyCountries();
 
         return RedirectToAction("Index", "Home",
             new
