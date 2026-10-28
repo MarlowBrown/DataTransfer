@@ -6,11 +6,11 @@ namespace DataTransfer.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index(string activeGame = "all", string activeCategory = "all")
+    public IActionResult Index(CountryViewModel model)
     {
         var session = new CountriesSession(HttpContext.Session);
-        session.SetActiveGame(activeGame);
-        session.SetActiveCategory(activeCategory);
+        session.SetActiveGame(model.ActiveGame);
+        session.SetActiveCategory(model.ActiveCategory);
 
         int? count = session.GetCountryCount();
         if (count == null)
@@ -28,8 +28,8 @@ public class HomeController : Controller
         
         CountriesViewModel viewModel = new CountriesViewModel()
         {
-            ActiveGame = activeGame,
-            ActiveCategory = activeCategory,
+            ActiveGame = model.ActiveGame,
+            ActiveCategory = model.ActiveCategory,
             Games = Country.AllGames(),
             Categories = Country.AllTypes()
         };
@@ -37,14 +37,14 @@ public class HomeController : Controller
         // get teams
         List<Country> query = Country.AllCountries;
 
-        if (activeGame != "all")
+        if (model.ActiveGame != "all")
         {
-            query = query.Where(x => x.Game.ToLower() == activeGame.ToLower()).ToList();
+            query = query.Where(x => x.Game.ToLower() == model.ActiveGame.ToLower()).ToList();
         }
 
-        if (activeCategory != "all")
+        if (model.ActiveCategory != "all")
         {
-            query = query.Where(x => x.SportAndType.ToLower() == activeCategory.ToLower()).ToList();
+            query = query.Where(x => x.SportAndType.ToLower() == model.ActiveCategory.ToLower()).ToList();
         }
 
         viewModel.Countries = query;
